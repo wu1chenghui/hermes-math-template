@@ -225,7 +225,7 @@ Everything here is source material to be copied into `~/.hermes/` on your machin
 
 ## Model
 
-Default configuration uses **DeepSeek** (`deepseek-chat`), which offers strong
+Default configuration uses **DeepSeek** (`deepseek-v4-pro`), which offers strong
 math and reasoning performance at low cost. Change the model in
 `config.yaml` → `model.default`.
 

@@ -220,7 +220,7 @@ docker compose exec hermes /opt/hermes/bin/hermes
 
 ## 模型
 
-默认使用 **DeepSeek**（`deepseek-chat`），数学推理能力强且价格低。
+默认使用 **DeepSeek**（`deepseek-v4-pro`），数学推理能力强且价格低。
 在 `config.yaml` → `model.default` 修改模型。
 
 ## WSL 注意事项
