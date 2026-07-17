@@ -63,6 +63,28 @@ development — all running locally in Docker.
 - A model provider API key (DeepSeek, Anthropic, OpenAI, or OpenRouter)
 - (Optional) WSL2 on Windows for Lean 4 support
 
+## How Files Are Deployed
+
+This repo has two independent layers — they can live in different places:
+
+```
+~/.hermes/                        ← Hermes runtime (always here)
+├── config.yaml                   ← from config/config.yaml.template
+├── .env                          ← from config/env.template
+├── skills/                       ← from skills/*
+│   ├── lean-4-workflow/
+│   └── ...
+└── ...                           (sessions, memory, pip-packages — auto-created)
+
+~/hermes-math-template/           ← Docker & workspace (can be anywhere)
+├── docker-compose.yml
+├── docker-data/                  ← SearXNG config (auto-created)
+└── workspace/                    ← shared files (default; override with $WORKSPACE_DIR)
+```
+
+- **`~/.hermes/`** — fixed location. Hermes reads config, skills, and runtime state from here.
+- **Docker files** — portable. Put `docker-compose.yml` wherever you want. The workspace directory follows it (defaulting to `./workspace`), and `$WORKSPACE_DIR` can point anywhere.
+
 ## Quick Start
 
 ```bash

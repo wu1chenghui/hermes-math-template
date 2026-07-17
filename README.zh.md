@@ -58,7 +58,29 @@ LaTeX 论文编译、隐私友好的网络搜索。
 - Docker Engine 24+
 - 6 GB 可用内存
 - 模型 API key（DeepSeek / Anthropic / OpenAI / OpenRouter 均可）
-- Windows 用户需要 WSL2（Lean 4 无法在 NTFS 挂载的 Windows 路径下编译）
+- (可选) Windows 用户需要 WSL2
+
+## 文件部署方式
+
+本仓库有两层独立结构，可以放在不同的位置：
+
+```
+~/.hermes/                        ← Hermes 运行时（固定位置）
+├── config.yaml                   ← 来自 config/config.yaml.template
+├── .env                          ← 来自 config/env.template
+├── skills/                       ← 来自 skills/*
+│   ├── lean-4-workflow/
+│   └── ...
+└── ...                           （sessions, memory, pip-packages — 自动创建）
+
+~/hermes-math-template/           ← Docker 与 workspace（可放在任意位置）
+├── docker-compose.yml
+├── docker-data/                  ← SearXNG 配置（自动创建）
+└── workspace/                    ← 共享文件（默认；可通过 $WORKSPACE_DIR 覆盖）
+```
+
+- **`~/.hermes/`** — 固定位置。Hermes 从这里读取配置、skill 和运行时状态。
+- **Docker 文件** — 可移动。把 `docker-compose.yml` 放在任何你喜欢的地方。workspace 目录跟随它（默认为 `./workspace`），也可通过 `$WORKSPACE_DIR` 指向任何路径。
 
 ## 快速开始
 
