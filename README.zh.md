@@ -58,7 +58,7 @@ LaTeX 论文编译、隐私友好的网络搜索。
 - Docker Engine 24+
 - 6 GB 可用内存
 - 模型 API key（DeepSeek / Anthropic / OpenAI / OpenRouter 均可）
-- (可选) Windows 用户需要 WSL2
+- (可选) Windows 用户需要 WSL2（Lean 4 无法在 NTFS 挂载的 Windows 路径下编译）
 
 ## 文件部署方式
 
