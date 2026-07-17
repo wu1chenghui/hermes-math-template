@@ -84,6 +84,27 @@ LaTeX 论文编译、隐私友好的网络搜索。
 - **`~/.hermes/`** — 固定位置。Hermes 从这里读取配置、skill 和运行时状态。
 - **Docker 文件** — 可移动。把 `docker-compose.yml` 放在任何你喜欢的地方。repo 根目录就是 workspace；也可通过 `$WORKSPACE_DIR` 指向任何路径。
 
+### 将 compose 文件移到其他目录
+
+如果把 `docker-compose.yml` 移出 repo，需要同时复制以下文件到它旁边：
+
+```
+~/my-docker/                       ← compose 文件所在目录
+├── docker-compose.yml
+├── AGENTS.md                      ← 必需（Hermes 自动加载）
+└── docker-data/
+    └── searxng/config/
+        └── settings.yml           ← 必需（SearXNG 配置）
+```
+
+然后在该目录下启动：
+```bash
+cd ~/my-docker
+docker compose up -d
+```
+
+其他文件 —— `config.yaml`、`.env`、`skills/` —— 始终保留在 `~/.hermes/` 中，不受影响。
+
 ## 快速开始
 
 ```bash

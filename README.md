@@ -87,6 +87,27 @@ This repo has two independent layers — they can live in different places:
 - **`~/.hermes/`** — fixed location. Hermes reads config, skills, and runtime state from here.
 - **Docker files** — portable. Put `docker-compose.yml` wherever you want. The repo root becomes the workspace by default; set `$WORKSPACE_DIR` to point anywhere else.
 
+### Moving compose to another directory
+
+If you move `docker-compose.yml` out of the repo, copy these alongside it:
+
+```
+~/my-docker/                       ← compose file lives here
+├── docker-compose.yml
+├── AGENTS.md                      ← required (Hermes auto-loads it)
+└── docker-data/
+    └── searxng/config/
+        └── settings.yml           ← required (SearXNG configuration)
+```
+
+Then start from that directory:
+```bash
+cd ~/my-docker
+docker compose up -d
+```
+
+Everything else — `config.yaml`, `.env`, `skills/` — stays in `~/.hermes/` regardless.
+
 ## Quick Start
 
 ```bash
