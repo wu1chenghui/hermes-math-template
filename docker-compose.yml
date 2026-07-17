@@ -19,6 +19,7 @@ services:
     image: nousresearch/hermes-agent:latest
     container_name: hermes
     restart: unless-stopped
+    command: sleep infinity         # Keep container alive; gateway NOT enabled by default
     working_dir: /workspace        # Match where AGENTS.md and workspace files live
     volumes:
       # Hermes home: persists config, skills, sessions, memory

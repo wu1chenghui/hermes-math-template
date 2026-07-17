@@ -131,6 +131,8 @@ cp docker/searxng/settings.yml docker-data/searxng/config/
 cp -r skills/* ~/.hermes/skills/
 
 # 5. Start the stack
+# The container runs `sleep infinity` — gateway is NOT enabled.
+# Hermes CLI is started manually in step 7.
 docker compose up -d
 
 # 6. Install Python packages (first time only)
@@ -192,6 +194,7 @@ This repo provides templates and skills — it does **not** contain runtime data
 - No session history (`state.db`, `sessions/`)
 - No personal memory or user profiles (`memories/`)
 - No Python packages or Playwright browsers (installed during Quick Start step 6)
+- Gateway is **not** enabled — container runs `sleep infinity` by default
 
 Everything here is source material to be copied into `~/.hermes/` on your machine.
 

@@ -128,6 +128,8 @@ cp docker/searxng/settings.yml docker-data/searxng/config/
 cp -r skills/* ~/.hermes/skills/
 
 # 5. 启动
+# 容器执行 `sleep infinity` —— 不会自动启动 gateway。
+# Hermes CLI 在第 7 步手动启动。
 docker compose up -d
 
 # 6. 安装 Python 包（仅首次）
