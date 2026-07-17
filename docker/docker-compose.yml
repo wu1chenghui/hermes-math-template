@@ -34,6 +34,7 @@ services:
       - "9119:9119"             # Hermes Dashboard (optional)
     environment:
       - HERMES_HOME=/opt/data   # CRITICAL: tells Hermes where config lives
+      - SEARXNG_URL=http://searxng-core:8080  # Self-hosted search engine
       - HERMES_DASHBOARD=1
       - HERMES_DASHBOARD_INSECURE=1  # Allow HTTP (no TLS) for local use
       - PYTHONPATH=/opt/data/pip-packages  # Persistent Python packages

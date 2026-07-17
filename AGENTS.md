@@ -72,11 +72,20 @@ SEARXNG_URL=http://searxng-core:8080   # Set in docker-compose or .env
 ## Skills Included
 
 The `skills/` directory contains 11 skills for mathematical research:
-`lean-4-workflow`, `lean-4-proof-writing`, `mathematical-writing`,
-`chinese-math-paper`, `paper-engineering`, `latex-workflow`,
-`web-search-strategy`, `agent-memory-architecture`,
-`container-python-environment`, `hermes-web-search-debugging`,
-`development-methodologies`.
+
+| Skill | Purpose |
+|---|---|
+| `lean-4-workflow` | Lean 4 project setup, build, dependency management |
+| `lean-4-proof-writing` | Proof tactics, patterns, debugging |
+| `mathematical-writing` | Mathematical paper writing conventions |
+| `chinese-math-paper` | Chinese math paper formatting (GB/T 7713, ctexart) |
+| `paper-engineering` | Pipeline: Lean formalization → journal paper |
+| `latex-workflow` | Markdown → LaTeX → PDF compilation |
+| `web-search-strategy` | Effective web research techniques |
+| `agent-memory-architecture` | Designing persistent memory for AI agents |
+| `container-python-environment` | Python venv and dependency management |
+| `hermes-web-search-debugging` | Search backend troubleshooting |
+| `development-methodologies` | External methodology reference (unverified) |
 
 Each skill has a `SKILL.md` with YAML frontmatter and linked `references/`,
 `templates/`, `scripts/` directories.
