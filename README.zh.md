@@ -74,6 +74,10 @@ docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 | `hermes-web-search-debugging` | 搜索后端故障排查 |
 | `development-methodologies` | 外部方法论参考（⚠️ 未经完全验证） |
 
+> **注意：** 这些 skill 是在一个真实的 Lean 4 项目中开发的。
+> skill 参考文件中的路径指向 `/opt/lean-home/lean-projects/e/`
+> —— 请将 `e` 替换为你自己的 Lean 项目目录。
+
 ### 基础设施文档
 
 | 文档 | 内容 |
