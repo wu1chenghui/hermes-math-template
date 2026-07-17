@@ -1,5 +1,7 @@
 # Hermes Math Template
 
+[English](README.md) | [中文](README.zh.md)
+
 A reproducible template for setting up Hermes Agent as a mathematical
 research assistant — with Lean 4 formal proof support, LaTeX document
 compilation, and privacy-respecting web search.

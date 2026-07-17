@@ -1,5 +1,7 @@
 # Hermes Math Template（中文说明）
 
+[English](README.md) | [中文](README.zh.md)
+
 一套可复现的 Hermes Agent 数学研究环境模板 —— 支持 Lean 4 形式化证明、
 LaTeX 论文编译、隐私友好的网络搜索。
 
