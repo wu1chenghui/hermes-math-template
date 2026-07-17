@@ -145,6 +145,8 @@ docker compose exec hermes bash -c "
 docker compose exec hermes /opt/hermes/bin/hermes
 ```
 
+> **首次运行：** Hermes 会检查配置版本，可能自动应用更新 —— 添加新的默认选项，更新格式版本号。已有配置不会被覆盖。这是正常的配置迁移，不会丢失数据。
+
 ## 包含内容
 
 ### Skills

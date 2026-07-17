@@ -149,6 +149,10 @@ docker compose exec hermes bash -c "
 docker compose exec hermes /opt/hermes/bin/hermes
 ```
 
+> **First run:** Hermes will check your config version and may auto-apply
+> updates — adding new default options, bumping the format version. Existing
+> settings are preserved. This is normal config migration, not data loss.
+
 ## What's Included
 
 ### Skills (Agent Knowledge)
