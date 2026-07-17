@@ -4,7 +4,44 @@ A reproducible template for setting up Hermes Agent as a mathematical
 research assistant — with Lean 4 formal proof support, LaTeX document
 compilation, and privacy-respecting web search.
 
-## What This Is
+Built following the official [Hermes Agent](https://hermes-agent.nousresearch.com/docs/) docs:
+[Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) ·
+[Skills](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) ·
+[MCP Servers](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) ·
+[Messaging Gateway](https://hermes-agent.nousresearch.com/docs/user-guide/messaging/)
+
+## Repo Structure
+
+```
+.
+├── skills/                         # 11 agent skills (SKILL.md + references/)
+│   ├── lean-4-workflow/
+│   ├── lean-4-proof-writing/
+│   ├── mathematical-writing/
+│   ├── chinese-math-paper/
+│   ├── paper-engineering/
+│   ├── latex-workflow/
+│   ├── web-search-strategy/
+│   ├── agent-memory-architecture/
+│   ├── container-python-environment/
+│   ├── hermes-web-search-debugging/
+│   └── development-methodologies/
+├── config/
+│   ├── config.yaml.template        # Hermes configuration template
+│   └── env.template                # API keys and environment variables
+├── docker/
+│   ├── docker-compose.yml          # Container orchestration
+│   └── searxng/settings.yml        # Search engine configuration
+├── infra/                          # Infrastructure setup guides
+│   ├── python.md
+│   ├── lean.md
+│   ├── latex.md
+│   └── search.md
+├── README.md                       # You are here
+├── README.zh.md
+├── AGENTS.md                       # Machine-readable context for AI agents
+└── .gitignore
+```
 
 This repository contains the **configuration, skills, and infrastructure
 documentation** needed to replicate a complete Hermes Agent environment
@@ -99,6 +136,16 @@ docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 | `config/env.template` | API keys and environment variables |
 | `docker/docker-compose.yml` | Container orchestration |
 | `docker/searxng/settings.yml` | Search engine configuration |
+
+### What's NOT Included
+
+This repo provides templates and skills — it does **not** contain runtime data:
+- No API keys or secrets (fill in `env.template` with your own)
+- No session history (`state.db`, `sessions/`)
+- No personal memory or user profiles (`memories/`)
+- No Python packages or Playwright browsers (installed during Quick Start step 6)
+
+Everything here is source material to be copied into `~/.hermes/` on your machine.
 
 ## Architecture
 

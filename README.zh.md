@@ -3,7 +3,44 @@
 一套可复现的 Hermes Agent 数学研究环境模板 —— 支持 Lean 4 形式化证明、
 LaTeX 论文编译、隐私友好的网络搜索。
 
-## 这是什么？
+基于官方 [Hermes Agent](https://hermes-agent.nousresearch.com/docs/) 文档构建：
+[配置指南](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) ·
+[技能系统](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) ·
+[MCP 服务器](https://hermes-agent.nousresearch.com/docs/user-guide/features/mcp) ·
+[消息网关](https://hermes-agent.nousresearch.com/docs/user-guide/messaging/)
+
+## 仓库结构
+
+```
+.
+├── skills/                         # 11 个 agent skill（SKILL.md + references/）
+│   ├── lean-4-workflow/
+│   ├── lean-4-proof-writing/
+│   ├── mathematical-writing/
+│   ├── chinese-math-paper/
+│   ├── paper-engineering/
+│   ├── latex-workflow/
+│   ├── web-search-strategy/
+│   ├── agent-memory-architecture/
+│   ├── container-python-environment/
+│   ├── hermes-web-search-debugging/
+│   └── development-methodologies/
+├── config/
+│   ├── config.yaml.template        # Hermes 配置模板
+│   └── env.template                # API key 和环境变量
+├── docker/
+│   ├── docker-compose.yml          # 容器编排
+│   └── searxng/settings.yml        # 搜索引擎配置
+├── infra/                          # 基础设施搭建指南
+│   ├── python.md
+│   ├── lean.md
+│   ├── latex.md
+│   └── search.md
+├── README.md
+├── README.zh.md                    # 你在这里
+├── AGENTS.md                       # 给 AI agent 看的项目上下文
+└── .gitignore
+```
 
 这个仓库包含搭建完整 Hermes Agent 环境所需的**配置文件、技能和基础设施文档**，
 面向以下场景优化：
@@ -95,6 +132,16 @@ docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 | `config/env.template` | API key 和环境变量 |
 | `docker/docker-compose.yml` | 容器编排 |
 | `docker/searxng/settings.yml` | 搜索引擎配置 |
+
+### 不包含的内容
+
+本仓库提供模板和 skill —— **不包含**运行时数据：
+- 不含 API key 或密码（请在 `env.template` 中填入自己的）
+- 不含会话历史（`state.db`、`sessions/`）
+- 不含个人记忆或用户画像（`memories/`）
+- 不含 Python 包或 Playwright 浏览器（Quick Start 第 6 步安装）
+
+这里的一切都是源文件，需要复制到你的 `~/.hermes/` 中使用。
 
 ## 架构
 
