@@ -50,12 +50,14 @@ docker compose -f docker/docker-compose.yml up -d
 
 # 6. Install Python packages (first time only)
 docker compose -f docker/docker-compose.yml exec hermes bash -c "
-    pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
-    playwright install chromium
+    uv pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
+    python3 -m playwright install chromium
 "
 
 # 7. Enter Hermes
-docker compose -f docker/docker-compose.yml exec hermes hermes
+# NOTE: /opt/hermes/bin is not in default PATH inside the container.
+# Use the absolute path to the privilege-drop shim.
+docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 ```
 
 ## What's Included

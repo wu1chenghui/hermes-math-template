@@ -18,9 +18,11 @@ environment:
 
 And `/opt/data` is a bind-mounted volume from `~/.hermes`. This means:
 
-1. Install packages with `--target`:
+1. Install packages with `uv pip install --target` (NOT `pip` — the Hermes
+   Docker image uses `uv` instead of `pip`):
+
    ```bash
-   pip install --target /opt/data/pip-packages ddgs scrapling playwright ...
+   uv pip install --target /opt/data/pip-packages ddgs scrapling playwright ...
    ```
 
 2. Packages survive container restarts and image updates.
@@ -54,8 +56,9 @@ Playwright needs more than the Python package — it needs actual browser binari
 
 ```bash
 # Inside the container:
-playwright install chromium
+python3 -m playwright install chromium
 # Browsers are installed to /opt/data/.playwright/ (persisted via volume)
+# Note: PYTHONPATH must include /opt/data/pip-packages (set in docker-compose.yml)
 ```
 
 ## Installation
@@ -67,12 +70,12 @@ If your container is fresh:
 docker compose exec hermes bash
 
 # Install core packages
-pip install --target /opt/data/pip-packages \
+uv pip install --target /opt/data/pip-packages \
     ddgs scrapling playwright curl_cffi browserforge \
     httpx httpx_sse cryptography beautifulsoup4
 
 # Install Playwright browser
-playwright install chromium
+python3 -m playwright install chromium
 ```
 
 ## Verifying

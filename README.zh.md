@@ -47,12 +47,13 @@ docker compose -f docker/docker-compose.yml up -d
 
 # 6. 安装 Python 包（仅首次）
 docker compose -f docker/docker-compose.yml exec hermes bash -c "
-    pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
-    playwright install chromium
+    uv pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
+    python3 -m playwright install chromium
 "
 
 # 7. 进入 Hermes
-docker compose -f docker/docker-compose.yml exec hermes hermes
+# 注意：/opt/hermes/bin 不在容器默认 PATH 中，需使用绝对路径调用特权降级 shim
+docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 ```
 
 ## 包含内容
