@@ -5,6 +5,9 @@
 一套可复现的 Hermes Agent 数学研究环境模板 —— 支持 Lean 4 形式化证明、
 LaTeX 论文编译、隐私友好的网络搜索。
 
+**全部运行在 Docker 中。** 无需在宿主机上 `pip install`，没有全局工具链冲突。
+agent 的终端、文件系统和网络访问都在容器内隔离 —— 安全实验，一键销毁。
+
 基于官方 [Hermes Agent](https://hermes-agent.nousresearch.com/docs/) 文档构建：
 [配置指南](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) ·
 [技能系统](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills) ·
