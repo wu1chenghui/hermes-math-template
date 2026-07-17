@@ -1,0 +1,174 @@
+%==============================================================================
+%  福建师范大学本科毕业论文（设计）LaTeX 模板
+%  理工科 · 第一种章节序号 (1 / 1.1 / 1.1.1)
+%  规格来源: jwc.fjnu.edu.cn — 本科毕业论文（设计）打印格式
+%
+%  Usage: Fill in \fjnu* commands, then compile with tectonic/xelatex.
+%  For md→thesis flow, use md2thesis.py which stitches pandoc body output.
+%==============================================================================
+
+%── 文档类 ──────────────────────────────────────────────────────────────────
+\documentclass[UTF8,a4paper,zihao=5,twoside=false,openany]{ctexrep}
+
+%── 页面设置 (左=2cm + 装订线0.5cm) ─────────────────────────────────────────
+\usepackage[paper=a4paper,
+  left=2.5cm, right=2cm, top=2cm, bottom=2cm,
+  headheight=1cm, headsep=0cm, footskip=1cm,
+  bindingoffset=0cm]{geometry}
+
+%── 行距 ────────────────────────────────────────────────────────────────────
+\usepackage{setspace}
+\singlespacing
+
+%── 数学与符号 ──────────────────────────────────────────────────────────────
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\numberwithin{equation}{section}
+
+%── 定理环境 ────────────────────────────────────────────────────────────────
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注记}
+
+%── 图表标题 ────────────────────────────────────────────────────────────────
+\usepackage{caption}
+\captionsetup{font=small,labelsep=quad}
+
+%── 首行缩进 2 汉字 + Pandoc 兼容 ───────────────────────────────────────────
+\usepackage{indentfirst}
+\setlength{\parindent}{2em}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{longtable,booktabs,array,multirow,calc}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+%── 页眉页脚 ────────────────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\fancyhead[L]{}
+\fancyhead[R]{}
+\renewcommand{\headrulewidth}{0pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}}
+
+%── 超链接 ──────────────────────────────────────────────────────────────────
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black]{hyperref}
+
+%── ctex 标题格式 ───────────────────────────────────────────────────────────
+\ctexset{
+  chapter = {
+    name = {,、},
+    number = \arabic{chapter},
+    format = \zihao{4}\bfseries\heiti,
+    beforeskip = 1\baselineskip,
+    afterskip = 0.5\baselineskip,
+    fixskip = true,
+  },
+  section = {
+    format = \zihao{-4}\bfseries\heiti,
+    beforeskip = 0.5\baselineskip,
+    afterskip = 0.5\baselineskip,
+  },
+  subsection = {
+    format = \zihao{5}\bfseries\heiti,
+    beforeskip = 0.5\baselineskip,
+    afterskip = 0.5\baselineskip,
+  },
+}
+
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{chapter}.\arabic{section}.\arabic{subsection}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+
+%── 自定义命令 ──────────────────────────────────────────────────────────────
+\newcommand{\Nn}{N_n}
+\newcommand{\Der}{\operatorname{Der}}
+\newcommand{\Id}{\operatorname{Id}}
+
+%── 封面占位信息（用户填写） ────────────────────────────────────────────────
+\newcommand{\fjnuSchool}{×××学院}
+\newcommand{\fjnuMajor}{×××专业}
+\newcommand{\fjnuStuId}{×××}
+\newcommand{\fjnuAuthor}{×××}
+\newcommand{\fjnuAdvisor}{×××}
+\newcommand{\fjnuTitle}{论文题目}
+\newcommand{\fjnuTitleEn}{English Title}
+\newcommand{\fjnuAbstractCn}{中文摘要内容。}
+\newcommand{\fjnuKeywordsCn}{关键词1；关键词2；关键词3}
+\newcommand{\fjnuAbstractEn}{English abstract content.}
+\newcommand{\fjnuKeywordsEn}{keyword1; keyword2; keyword3}
+
+%── 封面 ────────────────────────────────────────────────────────────────────
+\newcommand{\makecover}{
+  \thispagestyle{empty}
+  \begin{center}
+    \vspace*{2cm}
+    {\zihao{-2}\heiti\bfseries \fjnuTitle \par}
+    \vspace{1\baselineskip}
+    \begin{singlespace}
+      {\zihao{-4}\kaishu\bfseries \fjnuSchool \quad \fjnuMajor \par}
+      {\zihao{-4}\kaishu\bfseries \fjnuStuId（学号）\quad \fjnuAuthor（姓名）\quad 指导教师\quad\fjnuAdvisor \par}
+    \end{singlespace}
+  \end{center}
+  \newpage
+}
+
+%── 中文摘要与关键词 ────────────────────────────────────────────────────────
+\newcommand{\makeabstractcn}{
+  \vspace*{1\baselineskip}
+  \setlength{\parindent}{2em}
+  {\zihao{-5}\heiti\bfseries 【摘~要】}
+  {\zihao{-5}\kaishu\bfseries \fjnuAbstractCn \par}
+  \vspace{0.5\baselineskip}
+  {\zihao{-5}\heiti\bfseries 【关键词】}
+  {\zihao{-5}\kaishu\bfseries \fjnuKeywordsCn \par}
+}
+
+%── 英文摘要与关键词 ────────────────────────────────────────────────────────
+\newcommand{\makeabstracten}{
+  \vspace*{1\baselineskip}
+  \begin{center}
+    {\zihao{4}\bfseries \fjnuTitleEn \par}
+    \vspace{0.5\baselineskip}
+    {\zihao{-4}\bfseries \fjnuSchool \quad \fjnuMajor \par}
+    {\zihao{-4}\bfseries \fjnuStuId \quad \fjnuAuthor \quad Supervisor: \fjnuAdvisor \par}
+  \end{center}
+  \setlength{\parindent}{2em}
+  {\zihao{5}\bfseries 【Abstract】} {\zihao{5} \fjnuAbstractEn \par}
+  \vspace{0.5\baselineskip}
+  {\zihao{5}\bfseries 【Keywords】} {\zihao{5} \fjnuKeywordsEn \par}
+}
+
+%── 参考文献环境 ────────────────────────────────────────────────────────────
+\newenvironment{fjnurefs}{
+  \vspace{2\baselineskip}
+  {\zihao{5}\heiti\bfseries 参考文献 \par}
+  \vspace{0.5\baselineskip}
+  \setlength{\parindent}{0em}
+  \zihao{5}\songti
+}{}
+
+%==============================================================================
+%  文档开始
+%==============================================================================
+\begin{document}
+
+\makecover
+\makeabstractcn
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+%── 正文 ─────────────────────────────────────────────────────────────────────
+%  Body content inserted here by md2thesis.py
+\setlength{\parindent}{2em}
+\zihao{5}\songti
+\end{document}

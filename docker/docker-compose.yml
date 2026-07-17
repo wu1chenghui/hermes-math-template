@@ -1,0 +1,66 @@
+# =============================================================================
+# Hermes Agent + SearXNG Docker Compose
+# =============================================================================
+# Usage:
+#   docker compose up -d
+#   docker compose exec hermes hermes        # interactive chat
+#   docker compose exec hermes hermes gateway # start messaging gateway
+#
+# Prerequisites:
+#   - Docker Engine 24+
+#   - A ~/.hermes/ directory with config.yaml and .env
+#   - (Optional) Lean 4 installed at /opt/lean-home for MCP server
+# =============================================================================
+
+services:
+  hermes:
+    image: nousresearch/hermes-agent:latest
+    container_name: hermes
+    restart: unless-stopped
+    volumes:
+      # Hermes home: persists config, skills, sessions, memory
+      - ~/.hermes:/opt/data
+      # Workspace: shared files between host and container
+      - ./workspace:/workspace
+      # Lean 4 home (optional): for Lean LSP MCP server
+      # On WSL: this should be a WSL-native path (NOT under /mnt/c/)
+      # because Lean 4 cannot compile on NTFS-mounted Windows drives
+      - lean-home:/opt/lean-home
+    shm_size: 1g
+    ports:
+      - "9119:9119"             # Hermes Dashboard (optional)
+    environment:
+      - HERMES_DASHBOARD=1      # Enable dashboard
+      - HERMES_DASHBOARD_INSECURE=1  # Allow HTTP (no TLS) for local use
+      - PYTHONPATH=/opt/data/pip-packages  # Persistent Python packages
+    deploy:
+      resources:
+        limits:
+          memory: 6G
+          cpus: "8.0"
+        reservations:
+          memory: 2G
+
+  # ── SearXNG: Self-hosted Privacy Search Engine ─────────────────────────
+  searxng-core:
+    container_name: searxng-core
+    image: docker.io/searxng/searxng:latest
+    restart: unless-stopped
+    ports:
+      - "8085:8080"
+    volumes:
+      - ./docker-data/searxng/config/:/etc/searxng/
+      - ./docker-data/searxng/cache/:/var/cache/searxng/
+
+  searxng-valkey:
+    container_name: searxng-valkey
+    image: docker.io/valkey/valkey:9-alpine
+    command: valkey-server --save 30 1 --loglevel warning
+    restart: unless-stopped
+    volumes:
+      - valkey-data:/data/
+
+volumes:
+  valkey-data:
+  lean-home:                   # Named volume for Lean 4 toolchain
+                               # On WSL this stays on native ext4 filesystem

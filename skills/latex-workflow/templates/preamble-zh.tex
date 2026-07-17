@@ -1,0 +1,35 @@
+% ── Chinese + Math Fonts ─────────────────────────────────────────────
+% No T1/fontenc/lmodern — let ctex (fontspec) handle all fonts
+\setCJKmainfont{WenQuanYi Zen Hei}
+\setCJKsansfont{WenQuanYi Zen Hei}
+\setCJKmonofont{WenQuanYi Zen Hei}
+
+% ── Math & Symbols ──────────────────────────────────────────────────
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+
+% ── Theorem Environments (Chinese names) ────────────────────────────
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注记}
+
+% ── Page Layout ─────────────────────────────────────────────────────
+\usepackage[a4paper, margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ── Hyperlinks ──────────────────────────────────────────────────────
+\usepackage[colorlinks=true, linkcolor=blue, citecolor=blue, urlcolor=blue]{hyperref}
+
+% ── Custom Commands ─────────────────────────────────────────────────
+\newcommand{\Nn}{N_n}
+\newcommand{\Der}{\operatorname{Der}}
+\newcommand{\Id}{\operatorname{Id}}

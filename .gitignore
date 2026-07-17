@@ -1,0 +1,73 @@
+# Sensitive files — NEVER commit
+.env
+*.env
+!config/env.template
+auth.json
+auth.lock
+*.token
+*.key
+*.pem
+
+# Hermes state (large, auto-generated)
+state.db
+state.db-shm
+state.db-wal
+sessions/
+memories/
+memory/
+pairing/
+logs/
+image_cache/
+audio_cache/
+voice-memos/
+pastes/
+sandboxes/
+platforms/
+hooks/
+
+# Cache & temp
+.cache/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.models_dev_cache.json
+.provider_models_cache.json
+.skills_prompt_snapshot.json
+.update_check
+.install_method
+.agent-browser/
+
+# Build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Docker volumes
+docker-data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Custom scripts (personal)
+scripts/
+plans/
+
+# Large binaries (not source code)
+pip-packages/
+.playwright/
+.npm/

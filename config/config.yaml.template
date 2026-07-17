@@ -1,0 +1,107 @@
+# =============================================================================
+# Hermes Agent Configuration Template
+# =============================================================================
+# Copy to ~/.hermes/config.yaml and fill in your values.
+# See: https://hermes-agent.nousresearch.com/docs/user-guide/configuration
+# =============================================================================
+
+# ── Model ────────────────────────────────────────────────────────────────
+model:
+  default: deepseek-chat          # Change to your preferred model
+  provider: deepseek              # deepseek, openrouter, anthropic, openai, ...
+  base_url: https://api.deepseek.com/v1
+  # For OpenRouter: base_url: https://openrouter.ai/api/v1
+
+# ── Agent ────────────────────────────────────────────────────────────────
+agent:
+  max_turns: 90                   # Max tool-calling turns per message
+  reasoning_effort: medium         # none, minimal, low, medium, high, xhigh
+  tool_use_enforcement: auto
+
+# ── Web Search ───────────────────────────────────────────────────────────
+# Uses SearXNG (docker container) as primary, ddgs as fallback
+web:
+  search_backend: ddgs            # Fallback when SearXNG is unavailable
+  # extract_backend: ''           # Set to firecrawl, tavily, or exa if needed
+
+# ── Browser ──────────────────────────────────────────────────────────────
+# Playwright Chromium for Cloudflare-resistant web extraction
+browser:
+  engine: auto                    # Uses Playwright if available
+  inactivity_timeout: 120
+  dialog_policy: must_respond
+
+# ── Terminal ─────────────────────────────────────────────────────────────
+terminal:
+  backend: local
+  timeout: 180
+
+# ── Checkpoints ──────────────────────────────────────────────────────────
+checkpoints:
+  enabled: false                  # Enable for file-system rollback
+
+# ── Compression ──────────────────────────────────────────────────────────
+compression:
+  enabled: true
+  threshold: 0.7
+  target_ratio: 0.2
+  protect_last_n: 25
+
+# ── Memory ───────────────────────────────────────────────────────────────
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+
+# ── Delegation ───────────────────────────────────────────────────────────
+delegation:
+  max_iterations: 50
+  max_concurrent_children: 3
+  max_spawn_depth: 1
+  orchestrator_enabled: true
+
+# ── Approvals ────────────────────────────────────────────────────────────
+approvals:
+  mode: manual                    # manual, smart, off (off = --yolo)
+  cron_mode: deny                 # deny auto-approval for cron jobs
+
+# ── Security ─────────────────────────────────────────────────────────────
+security:
+  redact_secrets: true
+  tirith_enabled: true
+  allow_lazy_installs: true       # Auto-install Python deps for tools
+
+# ── Curator (Skill Lifecycle) ────────────────────────────────────────────
+curator:
+  enabled: true
+  interval_hours: 168             # Weekly maintenance
+  stale_after_days: 30
+  archive_after_days: 90
+
+# ── Display ──────────────────────────────────────────────────────────────
+display:
+  streaming: true
+  show_cost: true
+  inline_diffs: true
+
+# ── LSP ──────────────────────────────────────────────────────────────────
+lsp:
+  enabled: true
+  wait_mode: document
+
+# ── MCP Servers ──────────────────────────────────────────────────────────
+mcp_servers:
+  lean_lsp:                       # Lean 4 Language Server via MCP
+    command: uvx
+    args:
+    - lean-lsp-mcp
+    env:
+      LEAN_PROJECT_PATH: /opt/lean-home/lean-projects/your-project  # ← CHANGE
+      PATH: /opt/lean-home/bin:/opt/lean-home/toolchains/leanprover--lean4---v4.31.0-rc1/bin:/usr/local/bin:/usr/bin:/bin
+      ELAN_HOME: /opt/lean-home
+
+# ── Session ──────────────────────────────────────────────────────────────
+session_reset:
+  mode: both
+  idle_minutes: 1440

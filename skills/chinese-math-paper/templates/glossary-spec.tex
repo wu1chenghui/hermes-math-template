@@ -1,0 +1,177 @@
+% ============================================================
+% 术语对照表（Glossary）模板
+% 中文翻译的唯一术语标准
+% 全文必须统一使用，不得出现同义异译
+% 
+% 使用方式：复制此文件到目标 paper-cn/ 目录，
+% 根据具体论文修改术语条目。
+% ============================================================
+
+% --- 核心数学对象 ---
+% half-derivation                 1/2-导子
+% N_n                             幂零李代数 N_n（严格上三角矩阵）
+% HalfDer(N_n)                    1/2-导子空间
+% Hom(N_n, N_n)                   线性映射空间
+% strictly upper-triangular       严格上三角
+% nilpotent Lie algebra           幂零李代数
+% commutator bracket              交换子括号
+% Kronecker delta                 克罗内克 δ
+% standard basis                  标准基
+% maximal abelian ideal           极大交换理想
+% I (ideal)                       I（理想）
+% dim = n+5                       维数 = n+5
+% dim = n error                   dim=n 错误
+
+% --- 算子与空间 ---
+% Psi operator                    Ψ 算子（half-Leibniz 条件）
+% half-Leibniz morphism           半-Leibniz 态射
+% half-Leibniz condition          半-Leibniz 条件
+% bracket                         括号 [·,·]
+% bracket-source term             括号-源项（bracketSource, BS）
+% bracket-left term               括号-左项（bracketLeft, BL）
+% bracket-right term              括号-右项（bracketRight, BR）
+% bracket identity                括号恒等式（bracketIdentity, BI）
+% adjoint representation          伴随表示 ad
+% evaluation map                  求值映射 ev
+% currying                        Currying（参数化）
+% constraint operator             约束算子
+% evaluation operator             求值算子
+% vector equation space           向量方程空间 VEq
+% scalar equation space           标量方程空间 SEq
+% coordinate projection           坐标投影
+% scalar linear functional        标量线性泛函
+% image of ...                    ...的像
+% kernel of ...                   ...的核
+% rank-nullity theorem            秩–零度定理
+% commutative diagram             交换图
+
+% --- 证明架构：约束归约层 ---
+% constraint reduction            约束归约
+% chain bridge                    链桥（L2）
+% width reduction                 宽度归约（L3）
+% diagonal propagation            对角传播（L4）
+% image restriction               像限制（L5）
+% endpoint coupling               端点耦合（L6）
+% cross-endpoint constraint       跨端点约束
+% parameter count                 参数计数（L7）
+% channel decomposition           信道分解
+
+% --- 生成元分类 ---
+% generator / generating family   生成元 / 生成族
+% structural classification       结构分类
+% T0 family                       T0 族（自配对）
+% T1 family                       T1 族
+% T2 family                       T2 族（T1 的 σ-镜像）
+% T3 family                       T3 族（交换对）
+% non-commuting pair              非交换对
+% commuting pair                  交换对
+% canonical decomposition         标准分解
+
+% --- 导子分类 ---
+% identity derivation             恒等导子
+% simple-root center map          单根中心映射
+% boundary cocycle                边界 cocycle
+% centered derivation             中心化导子（对角为零）
+% diagonal entry                  对角分量
+% off-diagonal component          非对角分量
+% identity component              恒等分量
+% centered part                   中心化部分
+
+% --- 信道变量 ---
+% a-channel                       a-信道
+% b-channel                       b-信道
+% c-channel                       c-信道
+% channel variable                信道变量
+% channel restriction             信道限制
+% self-pair constraint            自配对约束
+
+% --- 结构概念 ---
+% Dynkin diagram                  Dynkin 图
+% Dynkin endpoint                 Dynkin 端点
+% Dynkin involution               Dynkin 对合 σ
+% sigma-equivariance              σ-等变性
+% simple root                     单根
+% non-local commuting pair        非局部交换对
+
+% --- 矩阵相关 ---
+% evaluation matrix               评价矩阵
+% row / column                    行 / 列
+% rank                            秩
+
+% --- 上下界 ---
+% lower bound                     下界
+% upper bound                     上界
+% linearly independent            线性无关
+% explicit basis                  显式基
+
+% --- 坐标约定 ---
+% coordinate label                坐标标签
+% coordinate convention           坐标约定
+% scalar parameter                标量参数
+% free parameter                  自由参数
+
+% --- Lean 对应术语（保留原名，不翻译）---
+% Lean formalization              Lean 形式化
+% reference implementation        参考实现
+% formal verification             形式化验证
+% correspondence principle        对应原则
+
+% --- 不翻译的代码标识符 ---
+% coeffOf_cond                    保留
+% coeffOf_map                     保留
+% finrank_halfDer                 保留
+% all_diag_equal                  保留
+% boundary_rigidity               保留
+% offdiag_zero_v_lt_n             保留
+% bracketSource                   保留
+% bracketIdentity                 保留
+% bracketLeft                     保留
+% bracketRight                    保留
+% half_leibniz                    保留
+% IsValidSupp                     保留
+% I_filtered                      保留
+% kerPhi                          保留
+
+% --- 通用数学术语 ---
+% characteristic                  特征
+% field                           域
+% linear map                      线性映射
+% bilinear map                    双线性映射
+% trilinear map                   三线性映射
+% linear extension                线性扩张
+% vanish / vanishes               为零 / 消失
+% non-zero                        非零
+% identically zero                恒为零
+% invertible                      可逆
+% uniquely determined             唯一确定
+% support                         支撑集
+% span                            张成空间
+% basis element                   基元素
+% decomposition                   分解
+% induction                       归纳
+% induction hypothesis            归纳假设
+% base case                       基情形
+% inductive step                  归纳步骤
+% verification                    验证
+% direct computation              直接计算
+% expansion                       展开
+% cancels / cancellation          抵消
+% index mismatch                  指标不匹配
+% structural omission             结构性遗漏
+% structural property             结构性质
+% consequence                     推论
+% the exceptional case            例外情形
+% counterexample                  反例
+
+% --- 论文结构 ---
+% Section                         节
+% Subsection                      小节
+% Appendix                        附录
+% Organization of the paper       论文组织
+% Motivation                      动机
+% distinguished basis             特异基
+% forward reference                前向引用
+% proof                           证明
+% Remark                          注记
+% Corollary                       推论
+% Definition                      定义
