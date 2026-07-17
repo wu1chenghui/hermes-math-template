@@ -24,9 +24,9 @@ services:
       # Hermes home: persists config, skills, sessions, memory
       - ~/.hermes:/opt/data
       # Workspace: shared files between host and container.
-      # Defaults to ./workspace (repo subdirectory).
+      # Defaults to current directory (repo root).
       # Override: WORKSPACE_DIR=/path/to/your/files docker compose up -d
-      - ${WORKSPACE_DIR:-./workspace}:/workspace
+      - ${WORKSPACE_DIR:-.}:/workspace
       # Lean 4 home (optional): for Lean LSP MCP server
       # On WSL: this should be a WSL-native path (NOT under /mnt/c/)
       # because Lean 4 cannot compile on NTFS-mounted Windows drives

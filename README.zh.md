@@ -76,11 +76,13 @@ LaTeX 论文编译、隐私友好的网络搜索。
 ~/hermes-math-template/           ← Docker 与 workspace（可放在任意位置）
 ├── docker-compose.yml
 ├── docker-data/                  ← SearXNG 配置（自动创建）
-└── workspace/                    ← 共享文件（默认；可通过 $WORKSPACE_DIR 覆盖）
+├── AGENTS.md                     ← Hermes 启动时自动加载
+├── skills/ config/ infra/ ...    ← 源文件（复制到 ~/.hermes/）
+└── （repo 根目录即 workspace；可通过 $WORKSPACE_DIR 覆盖）
 ```
 
 - **`~/.hermes/`** — 固定位置。Hermes 从这里读取配置、skill 和运行时状态。
-- **Docker 文件** — 可移动。把 `docker-compose.yml` 放在任何你喜欢的地方。workspace 目录跟随它（默认为 `./workspace`），也可通过 `$WORKSPACE_DIR` 指向任何路径。
+- **Docker 文件** — 可移动。把 `docker-compose.yml` 放在任何你喜欢的地方。repo 根目录就是 workspace；也可通过 `$WORKSPACE_DIR` 指向任何路径。
 
 ## 快速开始
 
@@ -91,12 +93,13 @@ cd hermes-math-template
 
 # 2. 创建目录
 mkdir -p ~/.hermes
-mkdir -p workspace docker-data/searxng/config docker-data/searxng/cache
+mkdir -p docker-data/searxng/config docker-data/searxng/cache
 
 # 3. 配置 Hermes
 cp config/config.yaml.template ~/.hermes/config.yaml
 cp config/env.template ~/.hermes/.env
 # 编辑 ~/.hermes/.env —— 填入 API key（至少 DEEPSEEK_API_KEY）
+cp docker/searxng/settings.yml docker-data/searxng/config/
 
 # 4. 安装 skill
 cp -r skills/* ~/.hermes/skills/

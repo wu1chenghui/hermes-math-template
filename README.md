@@ -79,11 +79,13 @@ This repo has two independent layers — they can live in different places:
 ~/hermes-math-template/           ← Docker & workspace (can be anywhere)
 ├── docker-compose.yml
 ├── docker-data/                  ← SearXNG config (auto-created)
-└── workspace/                    ← shared files (default; override with $WORKSPACE_DIR)
+├── AGENTS.md                     ← auto-loaded by Hermes on start
+├── skills/ config/ infra/ ...    ← source files (copied to ~/.hermes/)
+└── (workspace IS the repo root; override with $WORKSPACE_DIR)
 ```
 
 - **`~/.hermes/`** — fixed location. Hermes reads config, skills, and runtime state from here.
-- **Docker files** — portable. Put `docker-compose.yml` wherever you want. The workspace directory follows it (defaulting to `./workspace`), and `$WORKSPACE_DIR` can point anywhere.
+- **Docker files** — portable. Put `docker-compose.yml` wherever you want. The repo root becomes the workspace by default; set `$WORKSPACE_DIR` to point anywhere else.
 
 ## Quick Start
 
@@ -94,12 +96,13 @@ cd hermes-math-template
 
 # 2. Create directories
 mkdir -p ~/.hermes
-mkdir -p workspace docker-data/searxng/config docker-data/searxng/cache
+mkdir -p docker-data/searxng/config docker-data/searxng/cache
 
 # 3. Set up Hermes config
 cp config/config.yaml.template ~/.hermes/config.yaml
 cp config/env.template ~/.hermes/.env
 # Edit ~/.hermes/.env — add your API keys (at minimum DEEPSEEK_API_KEY)
+cp docker/searxng/settings.yml docker-data/searxng/config/
 
 # 4. Install skills
 cp -r skills/* ~/.hermes/skills/

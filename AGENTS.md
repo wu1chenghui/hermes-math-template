@@ -11,10 +11,11 @@ infrastructure documentation.
 git clone https://github.com/wu1chenghui/hermes-math-template.git
 cd hermes-math-template
 
-mkdir -p ~/.hermes workspace docker-data/searxng/config docker-data/searxng/cache
+mkdir -p ~/.hermes docker-data/searxng/config docker-data/searxng/cache
 cp config/config.yaml.template ~/.hermes/config.yaml
 cp config/env.template ~/.hermes/.env
 # EDIT ~/.hermes/.env — add DEEPSEEK_API_KEY
+cp docker/searxng/settings.yml docker-data/searxng/config/
 cp -r skills/* ~/.hermes/skills/
 docker compose up -d
 
