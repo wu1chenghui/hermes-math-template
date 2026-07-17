@@ -7,6 +7,7 @@ LaTeX 论文编译、隐私友好的网络搜索。
 
 **全部运行在 Docker 中。** 无需在宿主机上 `pip install`，没有全局工具链冲突。
 agent 的终端、文件系统和网络访问都在容器内隔离 —— 安全实验，一键销毁。
+通过 bind mount（`~/.hermes/`），配置、skill、记忆和会话在容器重建和镜像更新后依然保留。
 
 基于官方 [Hermes Agent](https://hermes-agent.nousresearch.com/docs/) 文档构建：
 [配置指南](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) ·

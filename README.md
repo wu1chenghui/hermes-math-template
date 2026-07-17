@@ -9,6 +9,8 @@ compilation, and privacy-respecting web search.
 **Everything runs in Docker.** No `pip install` on your host, no global
 toolchain conflicts. The agent's terminal, file system, and network access
 are container-isolated — safe to experiment with, trivial to tear down.
+And because Hermes home (`~/.hermes/`) is bind-mounted, your config, skills,
+memory, and sessions survive container rebuilds and image updates.
 
 Built following the official [Hermes Agent](https://hermes-agent.nousresearch.com/docs/) docs:
 [Configuration](https://hermes-agent.nousresearch.com/docs/user-guide/configuration) ·
