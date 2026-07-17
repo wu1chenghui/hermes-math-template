@@ -28,8 +28,8 @@ LaTeX 论文编译、隐私友好的网络搜索。
 ├── config/
 │   ├── config.yaml.template        # Hermes 配置模板
 │   └── env.template                # API key 和环境变量
+├── docker-compose.yml              # 容器编排
 ├── docker/
-│   ├── docker-compose.yml          # 容器编排
 │   └── searxng/settings.yml        # 搜索引擎配置
 ├── infra/                          # 基础设施搭建指南
 │   ├── python.md
@@ -80,17 +80,17 @@ cp config/env.template ~/.hermes/.env
 cp -r skills/* ~/.hermes/skills/
 
 # 5. 启动
-docker compose -f docker/docker-compose.yml up -d
+docker compose up -d
 
 # 6. 安装 Python 包（仅首次）
-docker compose -f docker/docker-compose.yml exec hermes bash -c "
+docker compose exec hermes bash -c "
     uv pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
     python3 -m playwright install chromium
 "
 
 # 7. 进入 Hermes
 # 注意：/opt/hermes/bin 不在容器默认 PATH 中，需使用绝对路径调用特权降级 shim
-docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
+docker compose exec hermes /opt/hermes/bin/hermes
 ```
 
 ## 包含内容
@@ -130,7 +130,7 @@ docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 |---|---|
 | `config/config.yaml.template` | Hermes 配置（模型、工具、MCP server 等） |
 | `config/env.template` | API key 和环境变量 |
-| `docker/docker-compose.yml` | 容器编排 |
+| `docker-compose.yml` | 容器编排 |
 | `docker/searxng/settings.yml` | 搜索引擎配置 |
 
 ### 不包含的内容

@@ -29,8 +29,8 @@ Built following the official [Hermes Agent](https://hermes-agent.nousresearch.co
 ├── config/
 │   ├── config.yaml.template        # Hermes configuration template
 │   └── env.template                # API keys and environment variables
+├── docker-compose.yml              # Container orchestration
 ├── docker/
-│   ├── docker-compose.yml          # Container orchestration
 │   └── searxng/settings.yml        # Search engine configuration
 ├── infra/                          # Infrastructure setup guides
 │   ├── python.md
@@ -83,10 +83,10 @@ cp config/env.template ~/.hermes/.env
 cp -r skills/* ~/.hermes/skills/
 
 # 5. Start the stack
-docker compose -f docker/docker-compose.yml up -d
+docker compose up -d
 
 # 6. Install Python packages (first time only)
-docker compose -f docker/docker-compose.yml exec hermes bash -c "
+docker compose exec hermes bash -c "
     uv pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
     python3 -m playwright install chromium
 "
@@ -94,7 +94,7 @@ docker compose -f docker/docker-compose.yml exec hermes bash -c "
 # 7. Enter Hermes
 # NOTE: /opt/hermes/bin is not in default PATH inside the container.
 # Use the absolute path to the privilege-drop shim.
-docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
+docker compose exec hermes /opt/hermes/bin/hermes
 ```
 
 ## What's Included
@@ -134,7 +134,7 @@ docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 |---|---|
 | `config/config.yaml.template` | Hermes configuration (model, tools, MCP servers) |
 | `config/env.template` | API keys and environment variables |
-| `docker/docker-compose.yml` | Container orchestration |
+| `docker-compose.yml` | Container orchestration |
 | `docker/searxng/settings.yml` | Search engine configuration |
 
 ### What's NOT Included

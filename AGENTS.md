@@ -16,16 +16,16 @@ cp config/config.yaml.template ~/.hermes/config.yaml
 cp config/env.template ~/.hermes/.env
 # EDIT ~/.hermes/.env — add DEEPSEEK_API_KEY
 cp -r skills/* ~/.hermes/skills/
-docker compose -f docker/docker-compose.yml up -d
+docker compose up -d
 
 # First-time package install (inside container):
-docker compose -f docker/docker-compose.yml exec hermes bash -c "
+docker compose exec hermes bash -c "
     uv pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
     python3 -m playwright install chromium
 "
 
 # Enter Hermes:
-docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
+docker compose exec hermes /opt/hermes/bin/hermes
 ```
 
 ## Key Paths
@@ -38,7 +38,7 @@ docker compose -f docker/docker-compose.yml exec hermes /opt/hermes/bin/hermes
 | `config/env.template` | API keys — copy to `~/.hermes/.env` |
 | `skills/` | Agent skills — copy to `~/.hermes/skills/` |
 | `infra/` | Infrastructure setup docs (python, lean, latex, search) |
-| `docker/docker-compose.yml` | Container orchestration |
+| `docker-compose.yml` | Container orchestration |
 
 ## Environment Variables Required
 
