@@ -62,6 +62,8 @@ development — all running locally in Docker.
 - 6 GB RAM free (for the Hermes container)
 - A model provider API key (DeepSeek, Anthropic, OpenAI, or OpenRouter)
 - (Optional) WSL2 on Windows for Lean 4 support
+- **Port check:** `8085` (SearXNG) and `9119` (Dashboard) must be free on the host.
+  Override with `SEARXNG_PORT` and `HERMES_DASHBOARD_PORT` env vars if needed.
 
 ## How Files Are Deployed
 

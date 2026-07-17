@@ -59,6 +59,8 @@ LaTeX 论文编译、隐私友好的网络搜索。
 - 6 GB 可用内存
 - 模型 API key（DeepSeek / Anthropic / OpenAI / OpenRouter 均可）
 - (可选) Windows 用户需要 WSL2（Lean 4 无法在 NTFS 挂载的 Windows 路径下编译）
+- **端口检查：** 宿主机 `8085`（SearXNG）和 `9119`（Dashboard）必须空闲。
+  如需更改，设置 `SEARXNG_PORT` 和 `HERMES_DASHBOARD_PORT` 环境变量。
 
 ## 文件部署方式
 

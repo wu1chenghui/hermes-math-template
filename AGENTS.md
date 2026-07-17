@@ -67,6 +67,8 @@ SEARXNG_URL=http://searxng-core:8080   # Set in docker-compose or .env
 - `HERMES_HOME=/opt/data` is set in docker-compose.yml — do NOT remove.
 - If you move `docker-compose.yml` to another directory, also copy `AGENTS.md`
   and `docker/searxng/settings.yml` alongside it. Everything else stays in `~/.hermes/`.
+- Ports `8085` (SearXNG) and `9119` (Dashboard) must be free on the host.
+  Override: `SEARXNG_PORT=9090 HERMES_DASHBOARD_PORT=9091 docker compose up -d`.
 - Lean 4 CANNOT compile on NTFS-mounted paths (WSL). Must be on WSL ext4.
 - Skills reference `/opt/lean-home/lean-projects/e/` throughout — this is the
   original project path. Replace `e` with your own project directory.
