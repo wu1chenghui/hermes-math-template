@@ -136,3 +136,7 @@ Windows WSL2 用户：
 ## 许可证
 
 MIT — 自由使用、修改、分享。
+
+---
+
+*AI agent 使用：请参阅 [AGENTS.md](AGENTS.md) 获取机器可读的项目上下文。*

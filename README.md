@@ -141,3 +141,7 @@ If you're on Windows with WSL2:
 ## License
 
 MIT — use freely, modify, share.
+
+---
+
+*For AI agents: see [AGENTS.md](AGENTS.md) for machine-readable project context.*
