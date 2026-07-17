@@ -33,19 +33,28 @@ development — all running locally in Docker.
 git clone https://github.com/wu1chenghui/hermes-math-template.git
 cd hermes-math-template
 
-# 2. Set up Hermes config
+# 2. Create directories
 mkdir -p ~/.hermes
+mkdir -p workspace docker-data/searxng/config docker-data/searxng/cache
+
+# 3. Set up Hermes config
 cp config/config.yaml.template ~/.hermes/config.yaml
 cp config/env.template ~/.hermes/.env
-# Edit ~/.hermes/.env — add your API keys
+# Edit ~/.hermes/.env — add your API keys (at minimum DEEPSEEK_API_KEY)
 
-# 3. Install skills
+# 4. Install skills
 cp -r skills/* ~/.hermes/skills/
 
-# 4. Start the stack
+# 5. Start the stack
 docker compose -f docker/docker-compose.yml up -d
 
-# 5. Enter Hermes
+# 6. Install Python packages (first time only)
+docker compose -f docker/docker-compose.yml exec hermes bash -c "
+    pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
+    playwright install chromium
+"
+
+# 7. Enter Hermes
 docker compose -f docker/docker-compose.yml exec hermes hermes
 ```
 

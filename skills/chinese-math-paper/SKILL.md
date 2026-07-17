@@ -217,7 +217,7 @@ in GitHub markdown, add ASCII spaces around `$` delimiters. Full recipe in
 When publishing Chinese math on GitHub, full-width CJK punctuation touching
 `$` delimiters prevents MathJax from rendering. Always add ASCII spaces:
 `：$...$，` → `： $...$ ，`. Full guide: load `paper-engineering` skill and
-see `references/github-markdown-math.md`.
+see `references/github-readme-math-rendering.md`.
 
 ### Lean names
 

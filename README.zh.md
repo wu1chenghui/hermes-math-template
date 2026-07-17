@@ -30,19 +30,28 @@ LaTeX 论文编译、隐私友好的网络搜索。
 git clone https://github.com/wu1chenghui/hermes-math-template.git
 cd hermes-math-template
 
-# 2. 配置 Hermes
+# 2. 创建目录
 mkdir -p ~/.hermes
+mkdir -p workspace docker-data/searxng/config docker-data/searxng/cache
+
+# 3. 配置 Hermes
 cp config/config.yaml.template ~/.hermes/config.yaml
 cp config/env.template ~/.hermes/.env
-# 编辑 ~/.hermes/.env —— 填入 API key
+# 编辑 ~/.hermes/.env —— 填入 API key（至少 DEEPSEEK_API_KEY）
 
-# 3. 安装 skill
+# 4. 安装 skill
 cp -r skills/* ~/.hermes/skills/
 
-# 4. 启动
+# 5. 启动
 docker compose -f docker/docker-compose.yml up -d
 
-# 5. 进入 Hermes
+# 6. 安装 Python 包（仅首次）
+docker compose -f docker/docker-compose.yml exec hermes bash -c "
+    pip install --target /opt/data/pip-packages ddgs scrapling playwright curl_cffi browserforge httpx
+    playwright install chromium
+"
+
+# 7. 进入 Hermes
 docker compose -f docker/docker-compose.yml exec hermes hermes
 ```
 

@@ -251,7 +251,7 @@ is transcribed.
 When publishing the paper's README on GitHub, four rendering traps break
 LaTeX: `\operatorname` unsupported, `$` in headings, `_` in table cells,
 and CJK punctuation touching `$`. Full reproduction recipes in
-`references/github-markdown-math.md`.
+`references/github-readme-math-rendering.md`.
 
 ### Self-pair identity
 [T(E),E] + [E,T(E)] = 0 expands via antisymmetry to 0=0. This is a

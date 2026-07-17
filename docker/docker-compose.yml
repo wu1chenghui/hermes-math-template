@@ -1,15 +1,17 @@
 # =============================================================================
 # Hermes Agent + SearXNG Docker Compose
 # =============================================================================
-# Usage:
-#   docker compose up -d
-#   docker compose exec hermes hermes        # interactive chat
-#   docker compose exec hermes hermes gateway # start messaging gateway
+# Usage (run from repo root):
+#   docker compose -f docker/docker-compose.yml up -d
+#   docker compose -f docker/docker-compose.yml exec hermes hermes
 #
 # Prerequisites:
 #   - Docker Engine 24+
 #   - A ~/.hermes/ directory with config.yaml and .env
 #   - (Optional) Lean 4 installed at /opt/lean-home for MCP server
+#
+# IMPORTANT: This file lives in docker/, so relative paths below use ".."
+# to reference the repo root. Run docker compose from the repo root.
 # =============================================================================
 
 services:
@@ -21,7 +23,7 @@ services:
       # Hermes home: persists config, skills, sessions, memory
       - ~/.hermes:/opt/data
       # Workspace: shared files between host and container
-      - ./workspace:/workspace
+      - ../workspace:/workspace
       # Lean 4 home (optional): for Lean LSP MCP server
       # On WSL: this should be a WSL-native path (NOT under /mnt/c/)
       # because Lean 4 cannot compile on NTFS-mounted Windows drives
@@ -30,7 +32,8 @@ services:
     ports:
       - "9119:9119"             # Hermes Dashboard (optional)
     environment:
-      - HERMES_DASHBOARD=1      # Enable dashboard
+      - HERMES_HOME=/opt/data   # CRITICAL: tells Hermes where config lives
+      - HERMES_DASHBOARD=1
       - HERMES_DASHBOARD_INSECURE=1  # Allow HTTP (no TLS) for local use
       - PYTHONPATH=/opt/data/pip-packages  # Persistent Python packages
     deploy:
@@ -49,8 +52,8 @@ services:
     ports:
       - "8085:8080"
     volumes:
-      - ./docker-data/searxng/config/:/etc/searxng/
-      - ./docker-data/searxng/cache/:/var/cache/searxng/
+      - ../docker-data/searxng/config/:/etc/searxng/
+      - ../docker-data/searxng/cache/:/var/cache/searxng/
 
   searxng-valkey:
     container_name: searxng-valkey

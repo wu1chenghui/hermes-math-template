@@ -32,7 +32,7 @@ on `Bracket.lean` and both times destroyed working code (coeffOf, coeffOf_f, coe
 
 ## Core rule: partial imports, not full Mathlib
 
-**See also**: `references/bracket-case-analysis.md` — `split_ifs` + `‹...›` pattern, `induction'` with `generalizing` pitfall, and the `subst` vs `rw` issue after `split_ifs`.
+**See also**: `references/split-ifs-subst-pitfall.md` (`subst` vs `rw` after `split_ifs`), `references/split-ifs-multi-condition.md` (multi-condition `split_ifs`), and `references/split-ifs-ring-pattern.md` (ring pattern).
 
 After a full mathlib build, **do NOT `import Mathlib`** in .lean files.
 Always import only the specific submodules needed. This affects both
