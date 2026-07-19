@@ -30,7 +30,8 @@ agent 的终端、文件系统和网络访问都在容器内隔离 —— 安全
 │   ├── agent-memory-architecture/
 │   ├── container-python-environment/
 │   ├── hermes-web-search-debugging/
-│   └── development-methodologies/
+│   ├── development-methodologies/
+│   └── document-parser/
 ├── config/
 │   ├── config.yaml.template        # Hermes 配置模板
 │   └── env.template                # API key 和环境变量
@@ -168,6 +169,7 @@ docker compose exec hermes /opt/hermes/bin/hermes
 | `container-python-environment` | Python 虚拟环境与依赖管理 |
 | `hermes-web-search-debugging` | 搜索后端故障排查 |
 | `development-methodologies` | 外部方法论参考（⚠️ 未经完全验证） |
+| `document-parser` | 通过 MinerU 解析各种文档为 Markdown——公式/表格/OCR 识别 |
 
 > **注意：** 这些 skill 是在一个真实的 Lean 4 项目中开发的。
 > skill 参考文件中的路径指向 `/opt/lean-home/lean-projects/e/`

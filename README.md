@@ -33,7 +33,8 @@ Built following the official [Hermes Agent](https://hermes-agent.nousresearch.co
 │   ├── agent-memory-architecture/
 │   ├── container-python-environment/
 │   ├── hermes-web-search-debugging/
-│   └── development-methodologies/
+│   ├── development-methodologies/
+│   └── document-parser/
 ├── config/
 │   ├── config.yaml.template        # Hermes configuration template
 │   └── env.template                # API keys and environment variables
@@ -176,6 +177,7 @@ docker compose exec hermes /opt/hermes/bin/hermes
 | `container-python-environment` | Python venv and dependency management |
 | `hermes-web-search-debugging` | Search backend troubleshooting |
 | `development-methodologies` | External methodology reference (unverified) |
+| `document-parser` | Parse PDF/DOCX/PPTX/XLSX/images into Markdown via MinerU |
 
 > **Note:** These skills were developed alongside a real Lean 4 project.
 > File paths in skill references point to `/opt/lean-home/lean-projects/e/`

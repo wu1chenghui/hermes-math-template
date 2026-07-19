@@ -91,6 +91,7 @@ The `skills/` directory contains 11 skills for mathematical research:
 | `container-python-environment` | Python venv and dependency management |
 | `hermes-web-search-debugging` | Search backend troubleshooting |
 | `development-methodologies` | External methodology reference (unverified) |
+| `document-parser` | Parse PDF/DOCX/PPTX/XLSX/images into Markdown via MinerU |
 
 Each skill has a `SKILL.md` with YAML frontmatter and linked `references/`,
 `templates/`, `scripts/` directories.
